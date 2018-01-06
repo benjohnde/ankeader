@@ -1,5 +1,6 @@
 package io.github.benjohnde.ankeader.parser.utils;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,6 +21,6 @@ public class StringUtils {
             slices.add(sequence.substring(start, length));
         }
 
-        return slices;
+        return Collections.unmodifiableList(slices);
     }
 }

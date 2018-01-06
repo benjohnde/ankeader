@@ -8,9 +8,7 @@ import org.sqlite.SQLiteConfig;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 public class CollectionReader {

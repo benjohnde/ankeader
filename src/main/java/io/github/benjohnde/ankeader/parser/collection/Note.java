@@ -61,13 +61,11 @@ public class Note {
         return StringUtils.sliceBy((char) 0x1f, flds).get(0);
     }
 
-    public List<String> getAnswers() {
+    public String getAnswer() {
         if (flds == null) {
-            return new ArrayList<>();
+            return "";
         }
-        List<String> slices = StringUtils.sliceBy((char) 0x1f, flds);
-        slices.remove(0);
-        return slices;
+        return StringUtils.sliceBy((char) 0x1f, flds).get(1);
     }
 
     @Override
@@ -76,7 +74,7 @@ public class Note {
                 "id=" + id + ",\n" +
                 "tags='" + getTagsTokenized() + '\'' + ",\n" +
                 "question='" + getQuestion() + '\'' + ",\n" +
-                "answers='" + getAnswers() + '\'' + ",\n" +
+                "answer='" + getAnswer() + '\'' + ",\n" +
                 '}';
     }
 }
