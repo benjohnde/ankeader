@@ -3,15 +3,15 @@ package io.github.benjohnde.ankeader.parser.collection;
 import org.sormula.annotation.Column;
 import org.sormula.annotation.Row;
 
-@Row(tableName="notes")
+@Row(tableName = "notes")
 public class Note {
-    @Column(primaryKey=true)
+    @Column(primaryKey = true)
     private long id;
 
-    @Column(name="tags")
+    @Column(name = "tags")
     private String tags;
 
-    @Column(name="flds")
+    @Column(name = "flds")
     private String question;
 
     public long getId() {

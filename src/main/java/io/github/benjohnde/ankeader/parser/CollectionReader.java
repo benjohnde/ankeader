@@ -28,8 +28,14 @@ public class CollectionReader {
         Table<Note> tableNotes = database.getTable(Note.class);
         List<Note> notes = tableNotes.selectAll();
 
-        Table<Card> tableCards = database.getTable(Card.class);
-        List<Card> cards = tableCards.selectAll();
+        Note note = tableNotes.select("1346589241076");
+        String question = note.getQuestion();
+        for (int i = 0; i < question.length(); i++) {
+            if (question.charAt(i) == 0x1f) {
+                System.out.println(i);
+            }
+        }
+
 
         // finally
         connection.close();
