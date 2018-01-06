@@ -1,3 +1,4 @@
+.DS_Store
 .gradle/
 .idea/
 *.iml
@@ -5,4 +6,5 @@ out/
 gradle/
 gradlew
 gradlew.bat
-
+test/
+tmp/
