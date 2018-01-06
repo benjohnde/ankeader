@@ -9,8 +9,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -29,6 +32,15 @@ public class ApkgReader {
         readMedia();
         readSqlite();
         buildApkgTree();
+        removeTmp();
+    }
+
+    private void removeTmp() throws IOException {
+        Path rootPath = Paths.get(tmp.getAbsolutePath());
+        Files.walk(rootPath, FileVisitOption.FOLLOW_LINKS)
+                .sorted(Comparator.reverseOrder())
+                .map(Path::toFile)
+                .forEach(File::delete);
     }
 
     public void prepareApkgBase() {

@@ -23,7 +23,7 @@ public class CollectionReader {
         List<Card> cards = Collections.unmodifiableList(tableCards.selectAll());
 
         for (Card card : cards) {
-            System.out.println(card);
+            // System.out.println(card);
         }
 
         System.out.println(cards.size() + " cards were detected and parsed.");
