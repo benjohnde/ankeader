@@ -1,6 +1,6 @@
 package io.github.benjohnde.ankeader.parser;
 
-import io.github.benjohnde.ankeader.parser.collection.Note;
+import io.github.benjohnde.ankeader.parser.collection.Card;
 import org.sormula.Database;
 import org.sormula.Table;
 import org.sqlite.SQLiteConfig;
@@ -12,30 +12,35 @@ import java.util.Collections;
 import java.util.List;
 
 public class CollectionReader {
-    Connection connection;
+    private Connection connection;
+    private Database database;
 
     public CollectionReader(String tmp) throws Exception {
-        Class.forName("org.sqlite.JDBC");
+        File databaseFile = new File(tmp, "collection.anki2");
+        initSqliteConnection(databaseFile);
 
-        File sqlite3file = new File(tmp, "collection.anki2");
+        Table<Card> tableCards = database.getTable(Card.class);
+        List<Card> cards = Collections.unmodifiableList(tableCards.selectAll());
+
+        for (Card card : cards) {
+            System.out.println(card);
+        }
+
+        System.out.println(cards.size() + " cards were detected and parsed.");
+
+        // finally
+        connection.close();
+    }
+
+    private void initSqliteConnection(File databaseFile) throws Exception {
+        Class.forName("org.sqlite.JDBC");
 
         SQLiteConfig config = new SQLiteConfig();
         config.setReadOnly(true);
 
-        connection = DriverManager.getConnection("jdbc:sqlite:" + sqlite3file.getAbsolutePath(), config.toProperties());
+        String url = "jdbc:sqlite:" + databaseFile.getAbsolutePath();
 
-        Database database = new Database(connection);
-        Table<Note> tableNotes = database.getTable(Note.class);
-        List<Note> notes = Collections.unmodifiableList(tableNotes.selectAll());
-
-
-        for (Note note : notes) {
-            if (note.getAnswers().size() > 1) {
-                System.out.println("yeah");
-            }
-        }
-
-        // finally
-        connection.close();
+        connection = DriverManager.getConnection(url, config.toProperties());
+        database = new Database(connection);
     }
 }

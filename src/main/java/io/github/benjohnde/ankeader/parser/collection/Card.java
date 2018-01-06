@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Row(tableName = "notes")
-public class Note {
+public class Card {
     @Column(primaryKey = true)
     private long id;
 
@@ -19,6 +19,8 @@ public class Note {
 
     @Column(name = "flds")
     private String flds;
+
+    // getter / setter for sormula ORM
 
     public long getId() {
         return id;
@@ -70,11 +72,11 @@ public class Note {
 
     @Override
     public String toString() {
-        return "Note {\n" +
-                "id=" + id + ",\n" +
+        return "Card {\n" +
+                // "id=" + id + ",\n" +
                 "tags='" + getTagsTokenized() + '\'' + ",\n" +
-                "question='" + getQuestion() + '\'' + ",\n" +
-                "answer='" + getAnswer() + '\'' + ",\n" +
+                "question='" + StringUtils.html2text(getQuestion()) + '\'' + ",\n" +
+                "answer='" + StringUtils.html2text(getAnswer()) + '\'' + ",\n" +
                 '}';
     }
 }
