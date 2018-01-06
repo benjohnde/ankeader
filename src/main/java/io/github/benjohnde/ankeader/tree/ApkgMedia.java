@@ -1,8 +1,11 @@
 package io.github.benjohnde.ankeader.tree;
 
+import io.github.benjohnde.ankeader.parser.utils.MapUtils;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Objects;
 
 public class ApkgMedia {
     private String tmp;
@@ -13,8 +16,8 @@ public class ApkgMedia {
         this.tmp = tmp;
     }
 
-    public Path getMediaPath(String key) {
-        String value = media.get(key);
-        return Paths.get(tmp, value);
+    public Path getMediaPath(String value) {
+        String key = MapUtils.getKeyByValue(media, value);
+        return Paths.get(tmp, key);
     }
 }

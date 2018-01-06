@@ -23,9 +23,13 @@ public class CollectionReader {
         List<Card> cards = Collections.unmodifiableList(tableCards.selectAll());
 
         for (Card card : cards) {
-            // System.out.println(card);
+            if (card.getQuestion().indexOf("img") > 0) {
+                System.out.println(card.getQuestion());
+                break;
+            }
         }
 
+        System.out.println();
         System.out.println(cards.size() + " cards were detected and parsed.");
 
         // finally

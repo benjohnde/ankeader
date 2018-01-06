@@ -53,6 +53,7 @@ public class ApkgReader {
         }.getType();
         Map<String, String> media = new Gson().fromJson(jsonFile, type);
         this.media = new ApkgMedia(media, tmp.getAbsolutePath());
+        System.out.println(this.media.getMediaPath("f804bea8a1a40b19360b44d40ed1bcb9"));
     }
 
     public void readSqlite() throws Exception {
