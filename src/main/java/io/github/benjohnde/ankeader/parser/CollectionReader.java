@@ -1,6 +1,5 @@
 package io.github.benjohnde.ankeader.parser;
 
-import io.github.benjohnde.ankeader.parser.collection.Card;
 import io.github.benjohnde.ankeader.parser.collection.Note;
 import org.sormula.Database;
 import org.sormula.Table;
@@ -9,6 +8,9 @@ import org.sqlite.SQLiteConfig;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CollectionReader {
@@ -26,16 +28,14 @@ public class CollectionReader {
 
         Database database = new Database(connection);
         Table<Note> tableNotes = database.getTable(Note.class);
-        List<Note> notes = tableNotes.selectAll();
+        List<Note> notes = Collections.unmodifiableList(tableNotes.selectAll());
 
-        Note note = tableNotes.select("1346589241076");
-        String question = note.getQuestion();
-        for (int i = 0; i < question.length(); i++) {
-            if (question.charAt(i) == 0x1f) {
-                System.out.println(i);
+
+        for (Note note : notes) {
+            if (note.getAnswers().size() > 1) {
+                System.out.println("yeah");
             }
         }
-
 
         // finally
         connection.close();

@@ -23,6 +23,7 @@ public class ApkgReader {
     public ApkgReader(String filename) throws Exception {
         this.filename = filename;
         tmp = TmpServant.serve(filename);
+        System.out.println("Operating on: " + tmp);
         unzip();
         prepareApkgBase();
         readMedia();
@@ -36,7 +37,8 @@ public class ApkgReader {
 
     public void readMedia() throws IOException {
         String jsonFile = new String(Files.readAllBytes(Paths.get(tmp.getAbsolutePath(), "media")));
-        Type type = new TypeToken<Map<String, String>>() {}.getType();
+        Type type = new TypeToken<Map<String, String>>() {
+        }.getType();
         Map<String, String> media = new Gson().fromJson(jsonFile, type);
         this.media = new ApkgMedia(media, tmp.getAbsolutePath());
     }
