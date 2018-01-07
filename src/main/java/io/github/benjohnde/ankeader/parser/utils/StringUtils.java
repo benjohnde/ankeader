@@ -26,6 +26,7 @@ public class StringUtils {
         return Collections.unmodifiableList(slices);
     }
 
+    // For debugging purpose
     public static String html2text(String html) {
         return Jsoup.parse(html).text();
     }

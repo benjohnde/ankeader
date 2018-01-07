@@ -20,7 +20,7 @@ public class Card {
     @Column(name = "flds")
     private String flds;
 
-    // getter / setter for sormula ORM
+    // Getter / setter for sormula ORM
 
     public long getId() {
         return id;
