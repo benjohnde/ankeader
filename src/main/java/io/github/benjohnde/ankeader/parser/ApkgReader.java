@@ -1,15 +1,13 @@
 package io.github.benjohnde.ankeader.parser;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import io.github.benjohnde.ankeader.anki.ApkgMedia;
+import io.github.benjohnde.ankeader.parser.orm.CollectionReader;
 import io.github.benjohnde.ankeader.parser.utils.FileUtils;
 import io.github.benjohnde.ankeader.parser.utils.JsonUtils;
 import io.github.benjohnde.ankeader.parser.utils.ZipUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
@@ -31,7 +29,6 @@ public class ApkgReader {
         prepareApkgBase();
         readMedia();
         readSqlite();
-        buildApkgTree();
         FileUtils.remove(tmp);
     }
 
@@ -48,9 +45,6 @@ public class ApkgReader {
 
     public void readSqlite() throws Exception {
         CollectionReader collectionReader = new CollectionReader(tmp.getAbsolutePath());
-    }
-
-    public void buildApkgTree() {
-
+        collectionReader.getCards();
     }
 }

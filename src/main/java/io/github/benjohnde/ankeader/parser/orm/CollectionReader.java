@@ -1,6 +1,5 @@
-package io.github.benjohnde.ankeader.parser;
+package io.github.benjohnde.ankeader.parser.orm;
 
-import io.github.benjohnde.ankeader.parser.collection.Card;
 import org.sormula.Database;
 import org.sormula.Table;
 import org.sqlite.SQLiteConfig;
@@ -14,23 +13,12 @@ import java.util.List;
 public class CollectionReader {
     private Connection connection;
     private Database database;
+    private List<CardEntity> cards;
 
     public CollectionReader(String tmp) throws Exception {
         File databaseFile = new File(tmp, "collection.anki2");
         initSqliteConnection(databaseFile);
-
-        Table<Card> tableCards = database.getTable(Card.class);
-        List<Card> cards = Collections.unmodifiableList(tableCards.selectAll());
-
-        for (Card card : cards) {
-            if (card.getQuestion().indexOf("img") > 0) {
-                System.out.println(card.getQuestion());
-                break;
-            }
-        }
-
-        System.out.println();
-        System.out.println(cards.size() + " cards were detected and parsed.");
+        this.cards = readCards();
 
         // finally
         connection.close();
@@ -46,5 +34,15 @@ public class CollectionReader {
 
         connection = DriverManager.getConnection(url, config.toProperties());
         database = new Database(connection);
+    }
+
+    private List<CardEntity> readCards() throws Exception {
+        Table<CardEntity> tableCards = database.getTable(CardEntity.class);
+        List<CardEntity> cards = Collections.unmodifiableList(tableCards.selectAll());
+        return cards;
+    }
+
+    public List<CardEntity> getCards() {
+        return cards;
     }
 }

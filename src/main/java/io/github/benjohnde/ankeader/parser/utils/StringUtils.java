@@ -1,7 +1,5 @@
 package io.github.benjohnde.ankeader.parser.utils;
 
-import org.jsoup.Jsoup;
-
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,10 +22,5 @@ public class StringUtils {
         }
 
         return Collections.unmodifiableList(slices);
-    }
-
-    // For debugging purpose
-    public static String html2text(String html) {
-        return Jsoup.parse(html).text();
     }
 }
