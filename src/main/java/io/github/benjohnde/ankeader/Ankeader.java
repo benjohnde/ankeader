@@ -7,8 +7,8 @@ public class Ankeader {
         System.out.println("Starting Ankeader...");
         System.out.println("");
 
-        String input = "/Users/bjohn/git/ankeader/test/SIP1_bis_2017-09b.apkg";
-        String output = "/Users/bjohn/Desktop/ankeader/1/";
+        String input = "/Users/katja/Desktop/ankeader/SIP1_bis_2017-09b.apkg";
+        String output = "/Users/katja/Desktop/ankeader/document/";
 
         ApkgReader reader = new ApkgReader(input, output);
     }

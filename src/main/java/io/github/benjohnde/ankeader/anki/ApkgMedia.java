@@ -7,8 +7,8 @@ import java.nio.file.Paths;
 import java.util.Map;
 
 public class ApkgMedia {
-    private String tmp;
-    private Map<String, String> media;
+    private final String tmp;
+    private final Map<String, String> media;
 
     public ApkgMedia(Map<String, String> media, String tmp) {
         this.media = media;

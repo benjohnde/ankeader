@@ -14,8 +14,6 @@ public class CardEntity {
     @Column(name = "flds")
     private String flds;
 
-    // Getter / setter for sormula ORM
-
     public long getId() {
         return id;
     }

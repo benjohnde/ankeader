@@ -8,9 +8,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class ApkgCard {
-    private List<String> tags;
-    private String question;
-    private String answer;
+    private final List<String> tags;
+    private final String question;
+    private final String answer;
 
     public ApkgCard(List<String> tags, String question, String answer) {
         this.tags = tags;
