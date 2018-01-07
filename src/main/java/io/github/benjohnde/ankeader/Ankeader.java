@@ -7,6 +7,9 @@ public class Ankeader {
         System.out.println("Starting Ankeader...");
         System.out.println("");
 
-        ApkgReader reader = new ApkgReader("/Users/bjohn/git/ankeader/test/SIP1_bis_2017-09b.apkg");
+        String input = "/Users/bjohn/git/ankeader/test/SIP1_bis_2017-09b.apkg";
+        String output = "/Users/bjohn/Desktop/ankeader/1/";
+
+        ApkgReader reader = new ApkgReader(input, output);
     }
 }
