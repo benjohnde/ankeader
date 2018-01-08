@@ -1,6 +1,6 @@
 package io.github.benjohnde.ankeader;
 
-import io.github.benjohnde.ankeader.parser.ApkgReader;
+import javafx.application.Application;
 
 public class Ankeader {
     public static void main(String[] args) throws Exception {
@@ -10,6 +10,8 @@ public class Ankeader {
         String input = "/Users/katja/Desktop/ankeader/SIP1_bis_2017-09b.apkg";
         String output = "/Users/katja/Desktop/ankeader/document/";
 
-        ApkgReader reader = new ApkgReader(input, output);
+        // ApkgReader reader = new ApkgReader(input, output);
+
+        Application.launch(MinimalisticUI.class);
     }
 }
