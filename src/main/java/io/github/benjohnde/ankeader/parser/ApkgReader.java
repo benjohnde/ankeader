@@ -10,6 +10,7 @@ import io.github.benjohnde.ankeader.parser.utils.JsonUtils;
 import io.github.benjohnde.ankeader.parser.utils.ZipUtils;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -44,8 +45,25 @@ public class ApkgReader {
         FileUtils.remove(tmp);
     }
 
-    private void processApkgBase() {
+    private void processApkgBase() throws IOException {
+        StringBuilder sb = new StringBuilder();
         System.out.println(this.base);
+        for (ApkgCard card : this.base.getCards()) {
+            String qst = card.getQuestion();
+            qst = qst.replaceAll("<img src=\"", "<img src=\"media/");
+
+            String asw = card.getAnswer();
+            asw = asw.replaceAll("<img src=\"", "<img src=\"media/");
+            sb.append(card.getTags());
+            sb.append(qst);
+            sb.append(asw);
+        }
+
+        String finalHtml = sb.toString();
+        File output = new File(this.output, "index.html");
+        FileWriter fooWriter = new FileWriter(output);
+        fooWriter.write(finalHtml);
+        fooWriter.close();
     }
 
     private void prepareApkgBase() {

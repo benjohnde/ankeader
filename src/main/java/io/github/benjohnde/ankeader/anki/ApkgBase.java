@@ -10,4 +10,12 @@ public class ApkgBase {
         this.cards = cards;
         this.media = media;
     }
+
+    public List<ApkgCard> getCards() {
+        return cards;
+    }
+
+    public ApkgMedia getMedia() {
+        return media;
+    }
 }
