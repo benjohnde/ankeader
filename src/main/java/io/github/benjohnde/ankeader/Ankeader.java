@@ -1,7 +1,11 @@
 package io.github.benjohnde.ankeader;
 
+import io.github.benjohnde.ankeader.anki.ApkgBase;
+import io.github.benjohnde.ankeader.generator.DocGenerator;
 import io.github.benjohnde.ankeader.parser.ApkgReader;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.nio.file.Paths;
 
 public class Ankeader {
@@ -16,5 +20,14 @@ public class Ankeader {
 
         ApkgReader reader = new ApkgReader(input, output);
         reader.run();
+
+        ApkgBase base = reader.getBase();
+        DocGenerator docGen = new DocGenerator(base);
+        String doc = docGen.gen();
+
+        File fileOutput = new File(output, "index.html");
+        FileWriter fooWriter = new FileWriter(fileOutput);
+        fooWriter.write(doc);
+        fooWriter.close();
     }
 }

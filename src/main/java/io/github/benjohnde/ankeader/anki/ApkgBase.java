@@ -1,21 +1,25 @@
 package io.github.benjohnde.ankeader.anki;
 
 import java.util.List;
+import java.util.Map;
 
 public class ApkgBase {
-    private final List<ApkgCard> cards;
-    private final ApkgMedia media;
-
-    public ApkgBase(List<ApkgCard> cards, ApkgMedia media) {
-        this.cards = cards;
-        this.media = media;
-    }
+    private List<ApkgCard> cards;
+    private Map<String, String> media;
 
     public List<ApkgCard> getCards() {
         return cards;
     }
 
-    public ApkgMedia getMedia() {
+    public void setCards(List<ApkgCard> cards) {
+        this.cards = cards;
+    }
+
+    public Map<String, String> getMedia() {
         return media;
+    }
+
+    public void setMedia(Map<String, String> media) {
+        this.media = media;
     }
 }
