@@ -1,14 +1,25 @@
-apply plugin: 'java'
-apply plugin: 'application'
+group "io.github.benjohnde"
+version "0.0.1"
+
+apply plugin: "java"
+apply plugin: "application"
+
+sourceCompatibility = 1.9
 
 repositories {
     jcenter()
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.8.2'
-    compile 'org.sormula:sormula:4.2'
-    compile 'org.xerial:sqlite-jdbc:3.7.2'
+    compile "com.google.code.gson:gson:2.8.2"
+    compile "org.sormula:sormula:4.2"
+    compile "org.xerial:sqlite-jdbc:3.7.2"
 }
 
-mainClassName = 'io.github.benjohnde.ankeader.Ankeader'
+mainClassName = "io.github.benjohnde.ankeader.Ankeader"
+
+jar {
+    manifest {
+        attributes "Main-Class": "${mainClassName}"
+    }
+}
