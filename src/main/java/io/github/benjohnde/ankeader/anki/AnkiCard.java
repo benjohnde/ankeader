@@ -2,12 +2,12 @@ package io.github.benjohnde.ankeader.anki;
 
 import java.util.List;
 
-public class ApkgCard {
+public class AnkiCard {
     private final List<String> tags;
     private final String question;
     private final String answer;
 
-    public ApkgCard(List<String> tags, String question, String answer) {
+    public AnkiCard(List<String> tags, String question, String answer) {
         this.tags = tags;
         this.question = question;
         this.answer = answer;

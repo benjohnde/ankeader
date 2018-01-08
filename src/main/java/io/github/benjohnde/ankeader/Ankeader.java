@@ -1,6 +1,6 @@
 package io.github.benjohnde.ankeader;
 
-import io.github.benjohnde.ankeader.anki.ApkgCard;
+import io.github.benjohnde.ankeader.anki.AnkiCard;
 import io.github.benjohnde.ankeader.generator.DocGenerator;
 import io.github.benjohnde.ankeader.parser.ApkgReader;
 import io.github.benjohnde.ankeader.parser.utils.FileUtils;
@@ -24,7 +24,7 @@ public class Ankeader {
         reader.run();
 
         AnkiTransformer transformer = new AnkiTransformer();
-        List<ApkgCard> cards = transformer.transformCards(reader.getCards());
+        List<AnkiCard> cards = transformer.transformCards(reader.getCards());
         transformer.transformMedia(reader.getMedia(), input, output);
 
         DocGenerator docGen = new DocGenerator(cards);

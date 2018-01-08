@@ -1,20 +1,20 @@
 package io.github.benjohnde.ankeader.generator;
 
-import io.github.benjohnde.ankeader.anki.ApkgCard;
+import io.github.benjohnde.ankeader.anki.AnkiCard;
 
 import java.io.IOException;
 import java.util.List;
 
 public class DocGenerator {
-    private final List<ApkgCard> cards;
+    private final List<AnkiCard> cards;
 
-    public DocGenerator(List<ApkgCard> cards) {
+    public DocGenerator(List<AnkiCard> cards) {
         this.cards = cards;
     }
 
     public String gen() throws IOException {
         StringBuilder sb = new StringBuilder();
-        for (ApkgCard card : this.cards) {
+        for (AnkiCard card : this.cards) {
             String qst = card.getQuestion();
             qst = qst.replaceAll("<img src=\"", "<img src=\"media/");
 

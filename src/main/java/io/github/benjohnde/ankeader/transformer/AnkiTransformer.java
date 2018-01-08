@@ -1,6 +1,6 @@
 package io.github.benjohnde.ankeader.transformer;
 
-import io.github.benjohnde.ankeader.anki.ApkgCard;
+import io.github.benjohnde.ankeader.anki.AnkiCard;
 import io.github.benjohnde.ankeader.parser.orm.CardEntity;
 import io.github.benjohnde.ankeader.parser.utils.StringUtils;
 
@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class AnkiTransformer {
-    public List<ApkgCard> transformCards(List<CardEntity> cards) {
+    public List<AnkiCard> transformCards(List<CardEntity> cards) {
         return cards
                 .stream()
                 .map(card -> {
@@ -27,7 +27,7 @@ public class AnkiTransformer {
                     String question = slices.get(0);
                     String answer = slices.get(1);
 
-                    return new ApkgCard(tags, answer, question);
+                    return new AnkiCard(tags, answer, question);
                 })
                 .collect(Collectors.toList());
     }
