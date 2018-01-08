@@ -47,16 +47,18 @@ public class ApkgReader {
 
     private void processApkgBase() throws IOException {
         StringBuilder sb = new StringBuilder();
-        System.out.println(this.base);
         for (ApkgCard card : this.base.getCards()) {
             String qst = card.getQuestion();
             qst = qst.replaceAll("<img src=\"", "<img src=\"media/");
 
             String asw = card.getAnswer();
             asw = asw.replaceAll("<img src=\"", "<img src=\"media/");
-            sb.append(card.getTags());
+            sb.append("<h4>#" + card.getTags() + "</h4>");
+            sb.append("<h3>Frage</h3>");
             sb.append(qst);
+            sb.append("<h3>Antwort</h3>");
             sb.append(asw);
+            sb.append("<hr>");
         }
 
         String finalHtml = sb.toString();
