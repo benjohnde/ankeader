@@ -1,6 +1,7 @@
 package io.github.benjohnde.ankeader.parser.utils;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
@@ -24,5 +25,11 @@ public class FileUtils {
                 .sorted(Comparator.reverseOrder())
                 .map(Path::toFile)
                 .forEach(File::delete);
+    }
+
+    public static void save(File file, String content) throws IOException {
+        FileWriter fooWriter = new FileWriter(file);
+        fooWriter.write(content);
+        fooWriter.close();
     }
 }
