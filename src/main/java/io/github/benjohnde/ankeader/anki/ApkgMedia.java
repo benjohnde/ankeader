@@ -15,6 +15,10 @@ public class ApkgMedia {
         this.tmp = tmp;
     }
 
+    public Map<String, String> getMedia() {
+        return media;
+    }
+
     public Path getMediaPath(String value) {
         String key = MapUtils.getKeyByValue(media, value);
         return Paths.get(tmp, key);
