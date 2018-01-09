@@ -7,9 +7,7 @@ import java.lang.reflect.Type
 
 object JsonUtils {
     fun getMapFromJson(json: String): Map<String, String>? {
-        val type = object : TypeToken<Map<String, String>>() {
-
-        }.type
+        val type = object : TypeToken<Map<String, String>>() {}.type
         return Gson().fromJson<Map<String, String>>(json, type)
     }
 }
