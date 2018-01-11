@@ -25,19 +25,27 @@ object Ankeader {
 
         val transformer = AnkiTransformer()
         val cards = transformer.transformCards(reader.cards!!)
-        transformer.transformMedia(reader.media!!, input, output)
+        transformer.transformMedia(reader.media!!, reader.tmp!!.absolutePath, output)
 
         // cluster in blocks (BlockXX)
+        val uniqueBlocks = HashSet<String>()
         cards.forEach {
-            val tag = it.tags.filter { it.contains("Block") }
-            println(tag)
+            val tags = it.tags.filter { it.contains("Block") }
+            uniqueBlocks.addAll(tags)
         }
 
-        val docGen = DocGenerator(cards)
-        val doc = docGen.gen()
+        uniqueBlocks.forEach { block ->
+            // generate html
+            val validCards = cards.filter { it.tags.contains(block) }
+            val docGen = DocGenerator(validCards)
+            val doc = docGen.gen()
 
-        val docFile = File(output, "index.html")
-        FileUtils.save(docFile, doc)
+            val docFile = File(output, "$block.html")
+            FileUtils.save(docFile, doc)
+        }
+
+        // TODO generate index file
+
 
         reader.cleanup()
     }

@@ -12,7 +12,8 @@ import java.nio.file.Files
 import java.nio.file.Paths
 
 class ApkgReader(private val input: String) {
-    private var tmp: File? = null
+    var tmp: File? = null
+        private set
 
     var media: Map<String, String>? = null
         private set

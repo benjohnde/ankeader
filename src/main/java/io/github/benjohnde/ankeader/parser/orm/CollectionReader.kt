@@ -38,6 +38,7 @@ constructor(tmp: String) {
     @Throws(Exception::class)
     private fun readCards(): List<CardEntity> {
         val tableCards = database!!.getTable(CardEntity::class.java)
-        return Collections.unmodifiableList(tableCards.selectAll())
+        val cards = tableCards.selectAll()
+        return Collections.unmodifiableList(cards)
     }
 }
