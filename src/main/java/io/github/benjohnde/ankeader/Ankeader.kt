@@ -4,6 +4,7 @@ import io.github.benjohnde.ankeader.generator.DocGenerator
 import io.github.benjohnde.ankeader.parser.ApkgReader
 import io.github.benjohnde.ankeader.parser.utils.FileUtils
 import io.github.benjohnde.ankeader.transformer.AnkiTransformer
+import javafx.application.Application
 import java.io.File
 import java.nio.file.Paths
 

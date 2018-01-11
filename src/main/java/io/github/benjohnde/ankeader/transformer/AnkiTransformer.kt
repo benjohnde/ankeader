@@ -16,7 +16,12 @@ import java.util.stream.Collectors
 class AnkiTransformer {
     fun transformCards(cards: List<CardEntity>): List<AnkiCard> {
         return cards.map {
-            val tags = it.tags!!.trim().split(" ")
+            var tags = it.tags!!.trim().split(" ")
+
+            if (!tags.contains("Block")) {
+                tags = tags.plus("Block00")
+            }
+
             val slices = StringUtils.sliceBy(0x1f.toChar(), it.flds!!)
             val question = slices[0]
             val answer = slices[1]
