@@ -40,7 +40,5 @@ object Ankeader {
         FileUtils.save(docFile, doc)
 
         reader.cleanup()
-
-        Application.launch(MinimalisticUI::class.java)
     }
 }
