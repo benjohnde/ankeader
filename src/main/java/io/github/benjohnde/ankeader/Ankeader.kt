@@ -17,7 +17,7 @@ object Ankeader {
 
         val home = System.getProperty("user.home")
 
-        val input = Paths.get(home, "Desktop/ankeader/SIP1_bis_2017-09b.apkg").toString()
+        val input = Paths.get(home, "Desktop/ankeader/SIP1_bis_inkl_2018-02a.apkg").toString()
         val output = Paths.get(home, "Desktop/ankeader/document/").toString()
 
         val reader = ApkgReader(input)
