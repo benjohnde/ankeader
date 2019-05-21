@@ -4,7 +4,6 @@ import io.github.benjohnde.ankeader.generator.DocGenerator
 import io.github.benjohnde.ankeader.parser.ApkgReader
 import io.github.benjohnde.ankeader.parser.utils.FileUtils
 import io.github.benjohnde.ankeader.transformer.AnkiTransformer
-import javafx.application.Application
 import java.io.File
 import java.nio.file.Paths
 
@@ -17,7 +16,7 @@ object Ankeader {
 
         val home = System.getProperty("user.home")
 
-        val input = Paths.get(home, "Desktop/ankeader/SIP1_bis_inkl_2018-02a.apkg").toString()
+        val input = Paths.get(home, "Desktop/SIP2_bis_inkl_2018-11.apkg").toString()
         val output = Paths.get(home, "Desktop/ankeader/document/").toString()
 
         val reader = ApkgReader(input)
